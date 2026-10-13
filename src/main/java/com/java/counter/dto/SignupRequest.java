@@ -2,6 +2,7 @@ package com.java.counter.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 public record SignupRequest(
         @NotBlank(message = "Email không được để trống")
