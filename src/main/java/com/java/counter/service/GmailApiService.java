@@ -56,7 +56,7 @@ public class GmailApiService {
 
             // Gửi dữ liệu qua cổng HTTPS (443) tới Google API
             this.webClient.post()
-                    .uri("https://googleapis.com")
+                    .uri("https://mail.google.com/")
                     .header("Authorization", "Bearer " + accessToken)
                     .contentType(MediaType.APPLICATION_JSON)
                     .bodyValue(Map.of("raw", encodedMessage))
