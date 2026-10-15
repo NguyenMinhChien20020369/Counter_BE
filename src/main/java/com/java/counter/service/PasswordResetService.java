@@ -86,8 +86,8 @@ public class PasswordResetService {
         String htmlContent =
                 "<h1>Mã của bạn là " + otp + "</h1>";
 
-//        emailService.sendPasswordResetOtp(email, otp);
-        gmailApiService.sendEmail(email, "Mã kích hoạt tài khoản", htmlContent);
+        emailService.sendPasswordResetOtp(email, otp);
+//        gmailApiService.sendEmail(email, "Mã kích hoạt tài khoản", htmlContent);
     }
 
     @Transactional
