@@ -6,6 +6,7 @@ import com.java.counter.entity.User;
 import com.java.counter.repository.PasswordResetOtpRepository;
 import com.java.counter.repository.UserRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,9 @@ public class PasswordResetService {
     private final PasswordEncoder passwordEncoder;
     private final EmailService emailService;
     private final byte[] otpHmacSecret;
+
+    @Autowired
+    private GmailApiService gmailApiService;
 
     public PasswordResetService(
             PasswordResetOtpRepository otpRepository,
@@ -79,7 +83,11 @@ public class PasswordResetService {
         resetOtp.setUsed(false);
         otpRepository.save(resetOtp);
 
-        emailService.sendPasswordResetOtp(email, otp);
+        String htmlContent =
+                "<h1>Mã của bạn là " + otp + "</h1>";
+
+//        emailService.sendPasswordResetOtp(email, otp);
+        gmailApiService.sendEmail(email, "Mã kích hoạt tài khoản", htmlContent);
     }
 
     @Transactional
