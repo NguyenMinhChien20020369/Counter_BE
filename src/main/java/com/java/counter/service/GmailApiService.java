@@ -27,7 +27,7 @@ public class GmailApiService {
         formData.add("grant_type", "refresh_token");
 
         Map<String, Object> response = webClient.post()
-                .uri("https://googleapis.com")
+                .uri("https://mail.google.com/")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .bodyValue(formData)
                 .retrieve()
