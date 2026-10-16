@@ -19,7 +19,7 @@ public class PasswordResetOtpCleanupService {
         this.otpRepository = otpRepository;
     }
 
-    @Scheduled(cron = "0 0 2 * * *", zone = "Asia/Ho_Chi_Minh")
+    @Scheduled(cron = "0 10 2 * * *", zone = "Asia/Ho_Chi_Minh")
     @Transactional
     public void deleteUsedOrExpiredOtps() {
         int deletedCount = otpRepository.deleteUsedOrExpired(Instant.now());

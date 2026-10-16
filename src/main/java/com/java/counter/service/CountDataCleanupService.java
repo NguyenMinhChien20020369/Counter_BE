@@ -23,7 +23,7 @@ public class CountDataCleanupService {
         this.monthRepository = monthRepository;
     }
 
-    @Scheduled(cron = "0 0 2 1 * *", zone = "Asia/Ho_Chi_Minh")
+    @Scheduled(cron = "0 10 2 1 * *", zone = "Asia/Ho_Chi_Minh")
     @Transactional
     public void deleteCountDataFromTwoMonthsAgo() {
         YearMonth targetMonth = YearMonth.now(SCHEDULE_ZONE).minusMonths(2);
