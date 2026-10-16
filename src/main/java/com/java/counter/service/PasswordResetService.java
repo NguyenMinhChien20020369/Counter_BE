@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
@@ -56,7 +57,7 @@ public class PasswordResetService {
     }
 
     @Transactional
-    public void requestOtp(String emailAddress) {
+    public void requestOtp(String emailAddress) throws IOException {
         String email = normalizeEmail(emailAddress);
         Instant now = Instant.now();
 
